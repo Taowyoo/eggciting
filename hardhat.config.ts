@@ -8,6 +8,8 @@ import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@nomiclabs/hardhat-ethers";
 import { getAccount, getContract } from "./scripts/helpers";
+import fetch from "node-fetch";
+
 dotenv.config();
 
 const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY } = process.env;
@@ -47,17 +49,34 @@ task("mint", "Mints from the NFT contract")
   .addParam("address", "The address to receive a token")
   .setAction(async function (taskArguments, hre) {
     const contract = await getContract("NFT", hre);
-    const transactionResponse = await contract.mintTo(taskArguments.address, {
+    const transactionResponse = await contract.mint(taskArguments.address, {
       gasLimit: 500_000,
     });
     console.log(`Transaction Hash: ${transactionResponse.hash}`);
+  });
+
+task("token-uri", "Fetches the token metadata for the given token ID")
+  .addParam("tokenId", "The tokenID to fetch metadata for")
+  .setAction(async function (taskArguments, hre) {
+    const contract = await getContract("NFT", hre);
+    const response = await contract.tokenURI(taskArguments.tokenId, {
+      gasLimit: 500_000,
+    });
+
+    const metadataUrl = response;
+    console.log(`Metadata URL: ${metadataUrl}`);
+
+    const metadata = await fetch(metadataUrl).then((res) => res.json());
+    console.log(
+      `Metadata fetch response: ${JSON.stringify(metadata, null, 2)}`
+    );
   });
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: "0.8.13",
   networks: {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",

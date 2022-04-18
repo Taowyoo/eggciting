@@ -28,5 +28,11 @@ module.exports = {
         tryExtensions: [".js", ".json", ".node", ".ts"],
       },
     ],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
 };
