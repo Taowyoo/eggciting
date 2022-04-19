@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BaseProvider } from "@ethersproject/providers";
 import { getContractAt } from "@nomiclabs/hardhat-ethers/internal/helpers";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
@@ -15,22 +15,38 @@ function getEnvVariable(key: string, defaultValue?: string): string {
 }
 
 // Helper method for fetching a connection provider to the Ethereum network
-function getProvider() {
-  return ethers.getDefaultProvider(getEnvVariable("NETWORK", "rinkeby"), {
-    alchemy: getEnvVariable("ALCHEMY_KEY"),
-  });
+function getProvider(hre: HardhatRuntimeEnvironment) {
+  const network = hre.ethers.providers.getNetwork(hre.network.name);
+  let provider: BaseProvider;
+  if (network._defaultProvider) {
+    provider = hre.ethers.providers.getDefaultProvider(hre.network.name, {
+      alchemy: getEnvVariable("ALCHEMY_KEY"),
+    });
+  } else {
+    switch (hre.network.name) {
+      case "maticmum":
+        provider = new hre.ethers.providers.AlchemyProvider(
+          hre.network.name,
+          getEnvVariable("ALCHEMY_MUMBAI_KEY")
+        );
+        break;
+      default:
+        throw Error("Unsupported network: " + hre.network.name);
+    }
+  }
+  return provider;
 }
 
 // Helper method for fetching a wallet account using an environment variable for the PK
-function getAccount() {
-  return new ethers.Wallet(
+function getAccount(hre: HardhatRuntimeEnvironment) {
+  return new hre.ethers.Wallet(
     getEnvVariable("ACCOUNT_PRIVATE_KEY"),
-    getProvider()
+    getProvider(hre)
   );
 }
 
 function getContract(contractName: string, hre: HardhatRuntimeEnvironment) {
-  const account = getAccount();
+  const account = getAccount(hre);
   return getContractAt(
     hre,
     contractName,
