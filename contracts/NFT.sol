@@ -9,7 +9,7 @@ import "./@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol";
 import "./@rarible/royalties/contracts/LibPart.sol";
 import "./@rarible/royalties/contracts/LibRoyaltiesV2.sol";
 
-contract NFT is
+contract Eggciting is
     ERC721EnumerableUpgradeable,
     OwnableUpgradeable,
     RoyaltiesV2Impl,

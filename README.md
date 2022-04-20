@@ -1,56 +1,36 @@
-# Advanced Sample Hardhat Project
+# Eggciting NFT project
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
-
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
-
-Try running some of the following tasks:
+Eggciting is a developing and growing NFT collection of algorithmically generated cute eggs. The 1st generation of egg will be created from 11 different traits including body colors, faces, props. Each egg comes with ownership and commercial usage rights.
 
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.ts
-TS_NODE_FILES=true npx ts-node scripts/deploy.ts
-npx eslint '**/*.{js,ts}'
-npx eslint '**/*.{js,ts}' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+# install deps
+yarn
+# compile contract
+yarn hardhat compile
+# deploy to blockchain
+yarn hardhat --network rinkeby deploy
+# mint
+yarn hardhat --network rinkeby mint RECIPIENT_ADDRESS
+# get specific token uri and metadata
+yarn hardhat --network rinkeby token-uri --token-id 1
 ```
 
-# Etherscan verification
+Currently support networks:
 
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
+- `rinkeby`
+- `maticmum` (Polygon testnet)
+- `ethereum`
 
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
+# Eggciting on Rinkeby
 
-```shell
-hardhat run --network ropsten scripts/deploy.ts
-```
+Address: 0x75f8d757EA2D87FFcb2fE2c0C8c505f333Bb573f
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+Opensea: https://testnets.opensea.io/collection/eggciting
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
+Rarible: https://rinkeby.rarible.com/collection/0x75f8d757ea2d87ffcb2fe2c0c8c505f333bb573f/items
 
-# Performance optimizations
-
-For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
-
-# Deployed Contracts
-
-## TestEggNFT on Rinkeby
-
-Address: 0x57B6C6401948244cd969928eD3f8E4914f66D74c
-
-## TestEGG2 on Mumbai
+## Eggciting on Mumbai(old)
 
 Address: 0xD099eE422b2bd3B5547ddAecE94EaB4cc08c619a
+
+

@@ -47,7 +47,7 @@ task("deploy", "Creates the NFT.sol contract").setAction(async function (
   hre
 ) {
   const nftContractFactory = await hre.ethers.getContractFactory(
-    "NFT",
+    "Eggciting",
     getAccount(hre)
   );
   const nft = await hre.upgrades.deployProxy(nftContractFactory, [
@@ -66,7 +66,7 @@ task("upgrade", "Upgrades the NFT.sol contract").setAction(async function (
     throw new Error("NFT_CONTRACT_ADDRESS is invalid!");
   }
   const nftContractFactory = await hre.ethers.getContractFactory(
-    "NFT",
+    "Eggciting",
     getAccount(hre)
   );
   const nft = await hre.upgrades.upgradeProxy(
@@ -78,18 +78,24 @@ task("upgrade", "Upgrades the NFT.sol contract").setAction(async function (
 
 task("mint", "Mints from the NFT contract")
   .addParam("address", "The address to receive a token")
+  .addParam("number", "Number of tokens to mint")
   .setAction(async function (taskArguments, hre) {
-    const contract = await getContract("NFT", hre);
-    const transactionResponse = await contract.mint(taskArguments.address, {
-      gasLimit: 500_000,
-    });
-    console.log(`Transaction Hash: ${transactionResponse.hash}`);
+    const contract = await getContract("Eggciting", hre);
+    const num = parseInt(taskArguments.number);
+    for (const i in [...Array(num)]) {
+      const transactionResponse = await contract.mint(taskArguments.address, {
+        gasLimit: 500_000,
+      });
+      console.log(
+        `${i + 1} time mint Transaction Hash: ${transactionResponse.hash}`
+      );
+    }
   });
 
 task("token-uri", "Fetches the token metadata for the given token ID")
   .addParam("tokenId", "The tokenID to fetch metadata for")
   .setAction(async function (taskArguments, hre) {
-    const contract = await getContract("NFT", hre);
+    const contract = await getContract("Eggciting", hre);
     const response = await contract.tokenURI(taskArguments.tokenId, {
       gasLimit: 500_000,
     });
