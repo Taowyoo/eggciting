@@ -1,0 +1,24 @@
+{
+    "title": "Trippy Toadz",
+    "name": "Trippy Toad #6236",
+    "description": "Trippy Toadz is a community-driven and limited collection of 6,969 algorithmically generated toadz minted on the Ethereum blockchain. The 1st generation of toadz will be created from over 175 different traits including body types, faces, accessories, and vibes. Some rarer than others but all ready to !trip in the metaverse. Each toad comes with ownership and commercial usage rights.",
+    "image": "ipfs://QmfQmng6SJbwYSnkTb1EPtNugmT9C1A7hAuVSw4nzg9cpb",
+    "attributes": [
+        {
+            "trait_type": "Background",
+            "value": "Sunset City"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Blueberry Radioactive"
+        },
+        {
+            "trait_type": "Eyes",
+            "value": "Dilated Eyes"
+        },
+        {
+            "trait_type": "Mouth",
+            "value": "Pink Smile"
+        }
+    ]
+}
