@@ -82,12 +82,12 @@ task("mint", "Mints from the NFT contract")
   .setAction(async function (taskArguments, hre) {
     const contract = await getContract("Eggciting", hre);
     const num = parseInt(taskArguments.number);
-    for (const i in [...Array(num)]) {
+    for (let i = 1; i <= num; i++) {
       const transactionResponse = await contract.mint(taskArguments.address, {
         gasLimit: 500_000,
       });
       console.log(
-        `${i + 1} time mint Transaction Hash: ${transactionResponse.hash}`
+        `${i} time mint Transaction Hash: ${transactionResponse.hash}`
       );
     }
   });
