@@ -10,3 +10,6 @@ artifacts
 
 # VS Code files
 .vscode/
+
+# ipfs files
+*.car
