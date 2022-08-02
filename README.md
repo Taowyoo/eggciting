@@ -4,8 +4,8 @@ Eggciting is a developing and growing NFT collection of algorithmically generate
 
 ## Author
 
-- Ssu-Yu(Kaitlyn) Ning
 - Yuxiang Cao
+- Ssu-Yu(Kaitlyn) Ning
 
 ## Introduction Google Slide
 
