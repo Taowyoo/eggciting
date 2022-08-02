@@ -71,9 +71,3 @@ Address: 0x75f8d757EA2D87FFcb2fE2c0C8c505f333Bb573f
 Opensea: https://testnets.opensea.io/collection/eggciting
 
 Rarible: https://rinkeby.rarible.com/collection/0x75f8d757ea2d87ffcb2fe2c0c8c505f333bb573f/items
-
-## Eggciting on Mumbai(old)
-
-Address: 0xD099eE422b2bd3B5547ddAecE94EaB4cc08c619a
-
-
